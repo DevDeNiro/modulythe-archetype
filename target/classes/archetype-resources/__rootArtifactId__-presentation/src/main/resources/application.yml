@@ -1,0 +1,22 @@
+#set( $symbol_dollar = '$' )
+spring:
+    application:
+        name: ${artifactId}
+
+    datasource:
+        url: jdbc:postgresql://${symbol_dollar}{POSTGRES_HOST:localhost}:${symbol_dollar}{POSTGRES_PORT:5432}/${symbol_dollar}{POSTGRES_DB:mydatabase}
+        username: ${symbol_dollar}{POSTGRES_USER:user}
+        password: ${symbol_dollar}{POSTGRES_PASSWORD:password}
+        driver-class-name: org.postgresql.Driver
+
+    jpa:
+        hibernate:
+            ddl-auto: validate
+        properties:
+            hibernate:
+                show_sql: true
+                format_sql: true
+
+    flyway:
+        locations: classpath:db/migration
+        baseline-on-migrate: true

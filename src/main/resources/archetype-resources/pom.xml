@@ -1,0 +1,106 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.1</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>${groupId}</groupId>
+    <artifactId>${rootArtifactId}</artifactId>
+    <version>${version}</version>
+    <packaging>pom</packaging>
+    <name>${rootArtifactId}</name>
+
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
+        <project.version>${version}</project.version>
+        <!--  Domain Module -->
+        <hybernate.version>8.0.2.Final</hybernate.version>
+        <jarkarta-el.version>4.0.2</jarkarta-el.version>
+        <jarkarta-el-api.version>6.0.1</jarkarta-el-api.version>
+        <!--  Application Module -->
+        <cucumber-io.version>7.22.1</cucumber-io.version>
+        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+        <!--  Presentation Module -->
+        <mapstruct-processor.version>1.6.3</mapstruct-processor.version>
+        <spring-boot-starter-actuator.version>3.4.5</spring-boot-starter-actuator.version>
+        <!--  Infrastructure Module -->
+        <data-jpa.version>3.4.2</data-jpa.version>
+        <mapstruct.version>1.6.3</mapstruct.version>
+        <spring-boot-starter.version>3.4.5</spring-boot-starter.version>
+        <flyway-database-postgresql.version>11.8.0</flyway-database-postgresql.version>
+        <springdoc-webmvc.version>2.8.3</springdoc-webmvc.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${symbol_dollar}{spring-boot-starter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${symbol_dollar}{spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${symbol_dollar}{maven-compiler-plugin.version}</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
