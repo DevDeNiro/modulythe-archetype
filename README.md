@@ -4,13 +4,19 @@
 
 This is a Maven archetype for creating multi-module Spring Boot projects based on a hexagonal architecture.
 
-The generated project is inspired by the structure of the `modulythe-core` project and provides a solid foundation for
-building modular and maintainable applications.
+The goal of the project is to provide a solid foundation for building modular and maintainable applications.
 
 ## Prerequisites
 
 * Java 21 or higher
 * Maven 3.8 or higher
+
+## Modulyth Architecture : dependency flow
+
+The project follows the Hexagonal Architecture (Ports/Adapters). Each yellow block corresponds to their respective
+modules.
+
+![img.svg](documentation/hexa_architecture_modules_black.svg)
 
 ## How to Use
 
